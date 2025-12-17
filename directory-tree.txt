@@ -1,0 +1,122 @@
+src/
+├── main/
+│   ├── java/
+│   │   ├── com/
+│   │       ├── proyecto/
+│   │           ├── citiodeportivo/
+│   │               ├── controller/
+│   │               │   ├── AdministradorController.java
+│   │               │   ├── AuthController.java
+│   │               │   ├── CanchaController.java
+│   │               │   ├── ClienteController.java
+│   │               │   ├── DisponibilidadEntrenadorController.java
+│   │               │   ├── EntrenadorController.java
+│   │               │   ├── PagoController.java
+│   │               │   ├── PasswordGenerator.java
+│   │               │   ├── ReporteController.java
+│   │               │   ├── ReservaController.java
+│   │               │   ├── SolicitudEntrenamientoController.java
+│   │               │   ├── TarifaController.java
+│   │               │   └── TestController.java
+│   │               ├── dto/
+│   │               │   ├── mapper/
+│   │               │   │   ├── AdministradorMapper.java
+│   │               │   │   ├── CanchaMapper.java
+│   │               │   │   ├── ClienteMapper.java
+│   │               │   │   ├── DisponibilidadMapper.java
+│   │               │   │   ├── EntrenadorMapper.java
+│   │               │   │   ├── PagoMapper.java
+│   │               │   │   ├── ReporteMapper.java
+│   │               │   │   ├── ReservaMapper.java
+│   │               │   │   ├── SolicitudEntrenamientoMapper.java
+│   │               │   │   └── TarifaMapper.java
+│   │               │   ├── AdministradorRequestDTO.java
+│   │               │   ├── AdministradorResponseDTO.java
+│   │               │   ├── CanchaRequestDTO.java
+│   │               │   ├── CanchaResponseDTO.java
+│   │               │   ├── ClienteRequestDTO.java
+│   │               │   ├── ClienteResponseDTO.java
+│   │               │   ├── DisponibilidadRequestDTO.java
+│   │               │   ├── DisponibilidadResponseDTO.java
+│   │               │   ├── EntrenadorRequestDTO.java
+│   │               │   ├── EntrenadorResponseDTO.java
+│   │               │   ├── LoginRequestDTO.java
+│   │               │   ├── LoginResponseDTO.java
+│   │               │   ├── PagoRequestDTO.java
+│   │               │   ├── PagoResponseDTO.java
+│   │               │   ├── RegistroRequestDTO.java
+│   │               │   ├── RegistroResponseDTO.java
+│   │               │   ├── ReporteRequestDTO.java
+│   │               │   ├── ReporteResponseDTO.java
+│   │               │   ├── ReservaRequestDTO.java
+│   │               │   ├── ReservaResponseDTO.java
+│   │               │   ├── SolicitudEntrenamientoRequestDTO.java
+│   │               │   ├── SolicitudEntrenamientoResponseDTO.java
+│   │               │   ├── TarifaRequestDTO.java
+│   │               │   ├── TarifaResponseDTO.java
+│   │               │   └── UsuarioRegistroDTO.java
+│   │               ├── entities/
+│   │               │   ├── enums/
+│   │               │   │   ├── EstadoCancha.java
+│   │               │   │   └── TipoCancha.java
+│   │               │   ├── AdministradorEntity.java
+│   │               │   ├── CanchaEntity.java
+│   │               │   ├── ClienteEntity.java
+│   │               │   ├── DisponibilidadEntrenadorEntity.java
+│   │               │   ├── EntrenadorEntity.java
+│   │               │   ├── PagoEntity.java
+│   │               │   ├── ReporteEntity.java
+│   │               │   ├── ReservaEntity.java
+│   │               │   ├── SolicitudEntrenamientoEntity.java
+│   │               │   └── TarifaEntity.java
+│   │               ├── repository/
+│   │               │   ├── AdministradorRepository.java
+│   │               │   ├── CanchaRepository.java
+│   │               │   ├── ClienteRepository.java
+│   │               │   ├── DisponibilidadEntrenadorRepository.java
+│   │               │   ├── EntrenadorRepository.java
+│   │               │   ├── PagoRepository.java
+│   │               │   ├── ReporteRepository.java
+│   │               │   ├── ReservaRepository.java
+│   │               │   ├── SolicitudEntrenamientoRepository.java
+│   │               │   └── TarifaRepository.java
+│   │               ├── security/
+│   │               │   ├── JwtFilter.java
+│   │               │   ├── JwtUtil.java
+│   │               │   ├── PasswordConfig.java
+│   │               │   └── SecurityConfig.java
+│   │               ├── service/
+│   │               │   ├── impl/
+│   │               │   │   ├── AdministradorServiceImpl.java
+│   │               │   │   ├── AuthServiceImpl.java
+│   │               │   │   ├── CanchaServiceImpl.java
+│   │               │   │   ├── ClienteServiceImpl.java
+│   │               │   │   ├── DisponibilidadEntrenadorServiceImpl.java
+│   │               │   │   ├── EntrenadorServiceImpl.java
+│   │               │   │   ├── PagoServiceImpl.java
+│   │               │   │   ├── ReporteServiceImpl.java
+│   │               │   │   ├── ReservaServiceImpl.java
+│   │               │   │   ├── SolicitudEntrenamientoServiceImpl.java
+│   │               │   │   └── TarifaServiceImpl.java
+│   │               │   ├── AdministradorService.java
+│   │               │   ├── AuthService.java
+│   │               │   ├── CanchaService.java
+│   │               │   ├── ClienteService.java
+│   │               │   ├── DisponibilidadEntrenadorService.java
+│   │               │   ├── EntrenadorService.java
+│   │               │   ├── PagoService.java
+│   │               │   ├── ReporteService.java
+│   │               │   ├── ReservaService.java
+│   │               │   ├── SolicitudEntrenamientoService.java
+│   │               │   └── TarifaService.java
+│   │               └── CitiodeportivoApplication.java
+│   ├── resources/
+│       ├── static/
+│       ├── templates/
+│       └── application.properties
+├── test/
+    ├── java/
+        ├── com/
+            ├── proyecto/
+                ├── citiodeportivo/
+                    └── CitiodeportivoApplicationTests.java

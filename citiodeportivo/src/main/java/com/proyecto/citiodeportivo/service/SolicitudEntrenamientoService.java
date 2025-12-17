@@ -1,0 +1,16 @@
+package com.proyecto.citiodeportivo.service;
+
+import com.proyecto.citiodeportivo.entities.SolicitudEntrenamientoEntity;
+import java.util.List;
+
+public interface SolicitudEntrenamientoService {
+    List<SolicitudEntrenamientoEntity> findAll();
+    SolicitudEntrenamientoEntity findById(Integer id);
+    SolicitudEntrenamientoEntity save(SolicitudEntrenamientoEntity s);
+    SolicitudEntrenamientoEntity update(Integer id, SolicitudEntrenamientoEntity s);
+    void delete(Integer id);
+
+    // métodos faltantes
+    SolicitudEntrenamientoEntity asignarEntrenador(Integer idSolicitud, Integer idEntrenador);
+    SolicitudEntrenamientoEntity liberarEntrenador(Integer idSolicitud);
+}
