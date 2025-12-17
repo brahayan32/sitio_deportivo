@@ -10,7 +10,8 @@ public interface SolicitudEntrenamientoService {
     SolicitudEntrenamientoEntity update(Integer id, SolicitudEntrenamientoEntity s);
     void delete(Integer id);
 
-    // métodos faltantes
+    // ✅ AGREGAR ESTOS DOS
+    List<SolicitudEntrenamientoEntity> findByEntrenador(Integer idEntrenador);
     SolicitudEntrenamientoEntity asignarEntrenador(Integer idSolicitud, Integer idEntrenador);
     SolicitudEntrenamientoEntity liberarEntrenador(Integer idSolicitud);
 }

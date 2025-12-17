@@ -19,13 +19,17 @@ public class SolicitudEntrenamientoController {
     private final SolicitudEntrenamientoService service;
     private final SolicitudEntrenamientoMapper mapper;
 
-    @GetMapping
-    public List<SolicitudEntrenamientoResponseDTO> listar() {
-        return service.findAll()
+    @GetMapping("/entrenador/{idEntrenador}")
+    public List<SolicitudEntrenamientoResponseDTO> listarPorEntrenador(@PathVariable Integer idEntrenador) {
+        return service.findByEntrenador(idEntrenador)  // ← Llama a service
                 .stream()
                 .map(mapper::toResponse)
                 .toList();
     }
+
+// Si tu controller no tiene inyectado el repository, agrégalo:
+// @RequiredArgsConstructor
+// private final SolicitudEntrenamientoRepository repository;
 
     @GetMapping("/{id}")
     public ResponseEntity<SolicitudEntrenamientoResponseDTO> obtener(@PathVariable Integer id) {
