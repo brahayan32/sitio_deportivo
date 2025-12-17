@@ -11,16 +11,17 @@ import java.util.Optional;
 public interface TarifaRepository extends JpaRepository<TarifaEntity, Integer> {
 
     List<TarifaEntity> findByTipoServicio(String tipoServicio);
-
     List<TarifaEntity> findByVigente(Boolean vigente);
 
-    @Query("""
-SELECT c.tarifa
-FROM CanchaEntity c
-WHERE c.idCancha = :idCancha
-AND c.tarifa.vigente = true
-""")
-    Optional<TarifaEntity> findTarifaVigentePorCancha(@Param("idCancha") Integer idCancha);
-
+    // ✅ CORREGIDO: Buscar tarifa vigente por cancha usando subquery
+    @Query(
+            "SELECT t FROM TarifaEntity t " +
+                    "WHERE t.idTarifa IN (" +
+                    "  SELECT c.tarifa.idTarifa FROM CanchaEntity c " +
+                    "  WHERE c.idCancha = :idCancha" +
+                    ") " +
+                    "AND t.vigente = true"
+    )
+    Optional<TarifaEntity> findByCancha_IdCanchaAndVigenteTrue(@Param("idCancha") Integer idCancha);
 
 }

@@ -3,6 +3,7 @@ package com.proyecto.citiodeportivo.service.impl;
 import com.proyecto.citiodeportivo.dto.TarifaRequestDTO;
 import com.proyecto.citiodeportivo.entities.TarifaEntity;
 import com.proyecto.citiodeportivo.repository.AdministradorRepository;
+import com.proyecto.citiodeportivo.repository.CanchaRepository;
 import com.proyecto.citiodeportivo.repository.TarifaRepository;
 import com.proyecto.citiodeportivo.service.TarifaService;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,11 @@ public class TarifaServiceImpl implements TarifaService {
 
     @Override
     public TarifaEntity findTarifaVigentePorCancha(Integer idCancha) {
-        return tarifaRepository.findTarifaVigentePorCancha(idCancha)
+        return tarifaRepository
+                .findByCancha_IdCanchaAndVigenteTrue(idCancha)
                 .orElseThrow(() -> new RuntimeException("Tarifa no encontrada"));
     }
+
 
     @Override
     public List<TarifaEntity> findAll() {

@@ -10,5 +10,6 @@ public class TarifaRequestDTO {
     private Double precioHora;
     private Boolean vigente;
     private Integer idAdmin; // creadoPorAdmin
+    private Integer idCancha;
 
 }

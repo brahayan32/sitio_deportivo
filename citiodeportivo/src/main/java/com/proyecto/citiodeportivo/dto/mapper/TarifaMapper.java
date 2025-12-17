@@ -2,8 +2,10 @@ package com.proyecto.citiodeportivo.dto.mapper;
 
 import com.proyecto.citiodeportivo.dto.TarifaRequestDTO;
 import com.proyecto.citiodeportivo.dto.TarifaResponseDTO;
+import com.proyecto.citiodeportivo.entities.CanchaEntity;
 import com.proyecto.citiodeportivo.entities.TarifaEntity;
 import com.proyecto.citiodeportivo.repository.AdministradorRepository;
+import com.proyecto.citiodeportivo.repository.CanchaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class TarifaMapper {
 
     private final AdministradorRepository adminRepo;
+    private final CanchaRepository canchaRepo;  // ✅ Agregar esta inyección
 
     public TarifaEntity toEntity(TarifaRequestDTO dto) {
         TarifaEntity t = new TarifaEntity();
@@ -39,6 +42,15 @@ public class TarifaMapper {
         dto.setIdAdmin(
                 t.getCreadoPorAdmin() != null ? t.getCreadoPorAdmin().getIdAdmin() : null
         );
+
+        // ✅ Nuevo: Buscar qué cancha tiene esta tarifa
+        Integer idCancha = canchaRepo.findAll().stream()
+                .filter(c -> c.getTarifa() != null && c.getTarifa().getIdTarifa().equals(t.getIdTarifa()))
+                .map(CanchaEntity::getIdCancha)
+                .findFirst()
+                .orElse(null);
+
+        dto.setIdCancha(idCancha);
         return dto;
     }
 }

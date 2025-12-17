@@ -32,5 +32,7 @@ public class TarifaEntity {
     @PrePersist
     public void onCreate() {
         creadoEn = LocalDateTime.now();
+
     }
+
 }

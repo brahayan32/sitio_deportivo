@@ -4,8 +4,10 @@ import com.proyecto.citiodeportivo.dto.CanchaRequestDTO;
 import com.proyecto.citiodeportivo.dto.CanchaResponseDTO;
 import com.proyecto.citiodeportivo.dto.mapper.CanchaMapper;
 import com.proyecto.citiodeportivo.entities.CanchaEntity;
+import com.proyecto.citiodeportivo.entities.TarifaEntity;
 import com.proyecto.citiodeportivo.entities.enums.TipoCancha;
 import com.proyecto.citiodeportivo.repository.CanchaRepository;
+import com.proyecto.citiodeportivo.repository.TarifaRepository;
 import com.proyecto.citiodeportivo.service.CanchaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class CanchaServiceImpl implements CanchaService {
 
     private final CanchaRepository canchaRepository;
     private final CanchaMapper canchaMapper;
+    private final TarifaRepository tarifaRepository;
 
     @Override
     public List<CanchaResponseDTO> findAll() {
@@ -41,10 +44,17 @@ public class CanchaServiceImpl implements CanchaService {
         validarDominio(dto);
 
         CanchaEntity entity = canchaMapper.toEntity(dto);
-        entity.setUltimaModificacion(LocalDateTime.now());
 
+        if (dto.getIdTarifa() != null) {
+            TarifaEntity tarifa = tarifaRepository.findById(dto.getIdTarifa())
+                    .orElseThrow(() -> new RuntimeException("Tarifa no encontrada"));
+            entity.setTarifa(tarifa);
+        }
+
+        entity.setUltimaModificacion(LocalDateTime.now());
         return canchaMapper.toResponseDTO(canchaRepository.save(entity));
     }
+
 
     @Override
     public CanchaResponseDTO update(Integer id, CanchaRequestDTO dto) {
@@ -52,19 +62,21 @@ public class CanchaServiceImpl implements CanchaService {
         CanchaEntity actual = canchaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cancha no encontrada"));
 
-        // si cambia el tipo, validar nuevamente el límite
-        if (!actual.getTipo().equals(dto.getTipo())) {
-            validarLimitePorTipo(dto.getTipo());
-        }
-
         actual.setNombre(dto.getNombre());
         actual.setTipo(dto.getTipo());
         actual.setEstado(dto.getEstado());
         actual.setDescripcion(dto.getDescripcion());
-        actual.setUltimaModificacion(LocalDateTime.now());
 
+        if (dto.getIdTarifa() != null) {
+            TarifaEntity tarifa = tarifaRepository.findById(dto.getIdTarifa())
+                    .orElseThrow(() -> new RuntimeException("Tarifa no encontrada"));
+            actual.setTarifa(tarifa);
+        }
+
+        actual.setUltimaModificacion(LocalDateTime.now());
         return canchaMapper.toResponseDTO(canchaRepository.save(actual));
     }
+
 
     @Override
     public void delete(Integer id) {

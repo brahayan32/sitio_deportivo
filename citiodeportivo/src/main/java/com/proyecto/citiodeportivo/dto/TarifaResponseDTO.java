@@ -11,4 +11,6 @@ public class TarifaResponseDTO {
     private Boolean vigente;
     private LocalDateTime creadoEn;
     private Integer idAdmin;
+    private Integer idCancha;
+
 }
