@@ -14,4 +14,6 @@ public interface TarifaService {
     // Filtros
     List<TarifaEntity> findByTipoServicio(String tipo);
     List<TarifaEntity> findVigentes();
+    TarifaEntity findTarifaVigentePorCancha(Integer idCancha);
+
 }

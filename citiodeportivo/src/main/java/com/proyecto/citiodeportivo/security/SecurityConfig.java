@@ -66,6 +66,13 @@ public class SecurityConfig {
 
                 // ADMIN
                 .requestMatchers("/administradores/**").hasRole("ADMIN")
+                // TARIFAS
+                .requestMatchers(HttpMethod.GET, "/tarifas/por-cancha/**")
+                .hasAnyRole("CLIENTE", "ADMIN")
+
+                .requestMatchers("/tarifas/**")
+                .hasRole("ADMIN")
+
 
                 .anyRequest().authenticated()
         );

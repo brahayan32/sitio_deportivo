@@ -73,5 +73,17 @@ public class TarifaController {
         return tarifaService.findVigentes()
                 .stream().map(mapper::toResponse).toList();
     }
+    @GetMapping("/por-cancha/{idCancha}")
+    public ResponseEntity<TarifaResponseDTO> obtenerPorCancha(
+            @PathVariable Integer idCancha
+    ) {
+        try {
+            TarifaEntity tarifa = tarifaService.findTarifaVigentePorCancha(idCancha);
+            return ResponseEntity.ok(mapper.toResponse(tarifa));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
 

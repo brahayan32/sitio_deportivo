@@ -11,4 +11,6 @@ public class CanchaRequestDTO {
     private TipoCancha tipo;
     private EstadoCancha estado;
     private String descripcion;
+    private Integer idTarifa;
+
 }

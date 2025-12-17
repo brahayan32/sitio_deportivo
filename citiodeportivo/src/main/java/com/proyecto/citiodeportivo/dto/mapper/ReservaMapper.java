@@ -36,7 +36,6 @@ public class ReservaMapper {
         r.setFin(dto.getFin());
         r.setIncluirEntrenador(dto.getIncluirEntrenador());
         r.setEstado(dto.getEstado());
-        r.setTotalPagar(dto.getTotalPagar());
 
         if (dto.getCreadoPorAdminId() != null) {
             r.setCreadoPorAdmin(

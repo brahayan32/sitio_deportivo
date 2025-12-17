@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class TarifaRequestDTO {
+
+
     private String tipoServicio;  // futbol6, padel, entrenamiento
     private Double precioHora;
     private Boolean vigente;

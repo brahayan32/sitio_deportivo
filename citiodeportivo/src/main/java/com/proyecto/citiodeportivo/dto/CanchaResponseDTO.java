@@ -12,4 +12,7 @@ public class CanchaResponseDTO {
     private TipoCancha tipo;
     private EstadoCancha estado;
     private String descripcion;
+    private Integer idTarifa;
+    private Double precioHora;
+
 }

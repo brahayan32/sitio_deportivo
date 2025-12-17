@@ -36,4 +36,9 @@ public class CanchaEntity {
     @ManyToOne
     @JoinColumn(name = "modificada_por_admin")
     private AdministradorEntity modificadaPorAdmin;
+
+    @ManyToOne
+    @JoinColumn(name = "id_tarifa")
+    private TarifaEntity tarifa;
+
 }

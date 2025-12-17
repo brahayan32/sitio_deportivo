@@ -18,6 +18,12 @@ public class TarifaServiceImpl implements TarifaService {
     private final AdministradorRepository adminRepo;
 
     @Override
+    public TarifaEntity findTarifaVigentePorCancha(Integer idCancha) {
+        return tarifaRepository.findTarifaVigentePorCancha(idCancha)
+                .orElseThrow(() -> new RuntimeException("Tarifa no encontrada"));
+    }
+
+    @Override
     public List<TarifaEntity> findAll() {
         return tarifaRepository.findAll();
     }
