@@ -17,13 +17,21 @@ public class JwtUtil {
         return Jwts.builder()
                 .setSubject(username)
                 .claim("rol", rol)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + expirationMs))
+                .signWith(key)
+                .compact();
+    }
+    public String generateToken(String username, String rol, Integer idCliente) {
+        return Jwts.builder()
+                .setSubject(username)
+                .claim("rol", rol)
                 .claim("idCliente", idCliente)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expirationMs))
                 .signWith(key)
                 .compact();
     }
-
     public String extractUsername(String token) {
         return Jwts.parserBuilder().setSigningKey(key)
                 .build().parseClaimsJws(token).getBody().getSubject();
